@@ -7,6 +7,7 @@ project(linorobot)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 add_compile_options(-std=c++11)
+add_definitions(-std=c++11 -Wall -g)
 
 ## Find catkin macros and libraries 
 find_package(catkin REQUIRED COMPONENTS
@@ -50,5 +51,10 @@ target_link_libraries(lino_base_node lino_base ${catkin_LIBRARIES})
 #############
 ## Testing ##
 #############
+if(CATKIN_ENABLE_TESTING)
+  find_package(rostest REQUIRED)
+  add_rostest_gtest(lino-test test/launch/gtest.test test/src/utest.cpp)
+  target_link_libraries(lino-test lino_base ${catkin_LIBRARIES})
+endif()
 
-# Future work
+

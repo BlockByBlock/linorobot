@@ -1,0 +1,4 @@
+<launch>
+	<test test-name="Basic_Tests" pkg="linorobot" type="lino-test"/>
+</launch>
+
